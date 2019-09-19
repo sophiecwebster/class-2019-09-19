@@ -1,0 +1,23 @@
+---
+title: '2019-09-19'
+author: "Sophie Webster"
+date: "9/19/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+enroll <- read_xlsx("raw-data/class_enrollment_summary_by_term_9.19.19.xlsx", skip = 3)
+enroll %>%
+  filter(`Course Department` == "English") %>%
+  select(UGrad, `Course Title`, `Course Name`, Total, `Course Department`) %>%
+  arrange(desc(Total))
+```
+
+
+
